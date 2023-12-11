@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   zookeeper:
-    image: zookeeper:3.7.0
+    image: confluentinc/cp-zookeeper:latest
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -9,7 +9,7 @@ services:
       - 22181:2181
 
   kafka:
-    image: obsidiandynamics/kafka:latest
+    image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
     ports:
@@ -21,10 +21,10 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   kafka2:
-    image: obsidiandynamics/kafka:latest
+    image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
     ports:
@@ -36,10 +36,10 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka2:29093
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   kafka3:
-    image: obsidiandynamics/kafka:latest
+    image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
     ports:
@@ -51,10 +51,10 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka3:29094
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   kafka4:
-    image: obsidiandynamics/kafka:latest
+    image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
     ports:
@@ -66,11 +66,11 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka4:29095
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
 
   kafka5:
-    image: obsidiandynamics/kafka:latest
+    image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
     ports:
@@ -82,11 +82,11 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka5:29096
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
 
   kafka6:
-    image: obsidiandynamics/kafka:latest
+    image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
     ports:
@@ -98,11 +98,11 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka6:29097
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
 
   kafka7:
-    image: obsidiandynamics/kafka:latest
+    image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
     ports:
@@ -114,11 +114,11 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka7:29098
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2          
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1          
 
 
   kafka-ui:
-    image: obsidiandynamics/kafdrop:latest
+    image: provectuslabs/kafka-ui
     container_name: kafka-ui
     ports:
       - 8090:8080
