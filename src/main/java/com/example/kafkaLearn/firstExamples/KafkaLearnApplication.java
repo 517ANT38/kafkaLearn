@@ -34,7 +34,8 @@ public class KafkaLearnApplication {
 		var comsumer = new MyConsumer("spring-topic-demo");
 
 		FileWriter out = new FileWriter("test");
-
+		producer.close();
+		ex.shutdown();
 		comsumer.consume((r) -> {
 			try {
 				out.write("key=" + r.key() + ", "
@@ -47,8 +48,7 @@ public class KafkaLearnApplication {
 
 
 		
-		producer.close();
-		ex.shutdown();
+		
 		TimeUnit.MINUTES.sleep(5);
 		comsumer.close();
 
