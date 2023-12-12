@@ -20,7 +20,7 @@ public class KafkaLearnApplication {
 	public static void main(String[] args) throws InterruptedException, ExecutionException, IOException {
 		// SpringApplication.run(KafkaLearnApplication.class, args);
 		var producer = new MyProducer("spring-topic-demo");
-		var messages = 30000;
+		var messages = 10000;
 		ExecutorService ex = Executors.newFixedThreadPool(10);
 		CountDownLatch latch = new CountDownLatch(messages);
 
@@ -34,8 +34,7 @@ public class KafkaLearnApplication {
 		var comsumer = new MyConsumer("spring-topic-demo");
 
 		FileWriter out = new FileWriter("test");
-		producer.close();
-		ex.shutdown();
+		
 		comsumer.consume((r) -> {
 			try {
 				out.write("key=" + r.key() + ", "
@@ -48,7 +47,8 @@ public class KafkaLearnApplication {
 
 
 		
-		
+		producer.close();
+		ex.shutdown();
 		TimeUnit.MINUTES.sleep(5);
 		comsumer.close();
 

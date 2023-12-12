@@ -40,6 +40,6 @@ public class MyProducer implements Closeable{
 
     @Override
     public void close() throws IOException {
-        producer.close(Duration.ofSeconds(1));
+        producer.close();
     }
 }
