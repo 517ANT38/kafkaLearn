@@ -22,7 +22,7 @@ public class MyConsumer implements Closeable{
 
     {
         var props = new Properties();
-		props.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+		props.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:49092");
         props.setProperty(ConsumerConfig.GROUP_ID_CONFIG, "groupId");
         props.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 		props.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());

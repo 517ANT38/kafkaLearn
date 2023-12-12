@@ -2,6 +2,7 @@ package com.example.kafkaLearn.firstExamples;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
@@ -18,7 +19,7 @@ public class MyProducer implements Closeable{
     
     {
         var props = new Properties();
-		props.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+		props.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:39092");
 		props.setProperty(ProducerConfig.CLIENT_ID_CONFIG, "clientId");
 		props.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 		props.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
@@ -39,6 +40,6 @@ public class MyProducer implements Closeable{
 
     @Override
     public void close() throws IOException {
-        producer.close();
+        producer.close(Duration.ofSeconds(1));
     }
 }
