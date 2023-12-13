@@ -1,0 +1,31 @@
+server:
+  port: 5005
+  # host: localhost
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:29092, localhost:39092, localhost:49092, localhost:59092
+      group-id: group_id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:29092, localhost:39092, localhost:49092, localhost:59092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:5005
+      context-path: /admin
+
+  # endpoint:
+  #   health:
+  #     show-details: always
+  #     url: http://localhost:5005/actuator
+ 
+
+topic:
+  name:  spring-topic-demo
